@@ -8,7 +8,9 @@ import 'logic.dart';
 class OrgListComponent extends StatelessWidget {
   // final data = List.generate(128, (i) => Color(0xFFFF00FF - 2 * i));
   final logic = Get.put(OrgListLogic());
-  final state = Get.find<OrgListLogic>().state;
+  final state = Get
+      .find<OrgListLogic>()
+      .state;
 
   String colorString(Color color) =>
       "#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}";
@@ -32,14 +34,16 @@ class OrgListComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        crossAxisCount: 3,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 20,
-        childAspectRatio: 1 / 0.5,
-        children: state.orgList.map((org) => _buildItem(org)).toList(),
-        physics: const ScrollPhysics());
+    return GetBuilder<OrgListLogic>(builder: (logic) {
+      return GridView.count(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          crossAxisCount: 3,
+          mainAxisSpacing: 12,
+          crossAxisSpacing: 20,
+          childAspectRatio: 1 / 0.5,
+          children: state.orgList.map((org) => _buildItem(org)).toList(),
+          physics: const ScrollPhysics());
+    });
   }
 }

@@ -23,6 +23,12 @@ class OrgListLogic extends GetxController {
     super.onReady();
   }
 
+  void addOrg(Org org) {
+    state.orgList.add(org);
+    update();
+    Get.back();
+  }
+
   @override
   void onClose() {
     // TODO: implement onClose

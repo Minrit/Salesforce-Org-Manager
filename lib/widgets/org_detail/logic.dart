@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../models/org.dart';
+import '../org_list/logic.dart';
 import 'state.dart';
 
 class OrgDetailLogic extends GetxController {
@@ -13,7 +14,8 @@ class OrgDetailLogic extends GetxController {
     print(state.checkboxState);
     var org = Org(state.nameController.text, state.checkboxState,
         domain: state.domainController.text);
-
+    final orgListLogic = Get.find<OrgListLogic>();
+    orgListLogic.addOrg(org);
   }
 
   void onCheckboxChange(v) {
