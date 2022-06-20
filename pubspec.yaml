@@ -37,6 +37,8 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.0.3
   url_launcher: ^6.1.2
+  json_serializable: ^6.2.0
+  build_runner: ^2.1.11
 
 dev_dependencies:
   flutter_test:
