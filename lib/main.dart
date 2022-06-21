@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sf_org_manager/widgets/org_detail/view.dart';
+import 'package:sf_org_manager/widgets/user_detail/view.dart';
 
 import 'widgets/home/view.dart';
 
@@ -25,6 +26,10 @@ class MyApp extends StatelessWidget {
       GetPage(
         name: '/org_detail',
         page: () => OrgDetailPage(),
+      ),
+      GetPage(
+        name: '/user_detail',
+        page: () => UserDetailPage(),
       ),
     ]);
   }

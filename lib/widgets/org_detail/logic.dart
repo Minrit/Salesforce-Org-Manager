@@ -19,6 +19,10 @@ class OrgDetailLogic extends GetxController {
     Get.back();
   }
 
+  void addUser() {
+    Get.toNamed("/user_detail");
+  }
+
   void onCheckboxChange(v) {
     print('change');
     print(v);
