@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../org_list/logic.dart';
 import 'state.dart';
 
 class OrgListTileLogic extends GetxController {
@@ -15,5 +16,10 @@ class OrgListTileLogic extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
+  }
+
+  void deleteOrg(int index){
+    final orgListLogic = Get.find<OrgListLogic>();
+    orgListLogic.deleteOrg(index);
   }
 }

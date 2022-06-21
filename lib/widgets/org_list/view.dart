@@ -8,9 +8,7 @@ import 'logic.dart';
 class OrgListComponent extends StatelessWidget {
   // final data = List.generate(128, (i) => Color(0xFFFF00FF - 2 * i));
   final logic = Get.put(OrgListLogic());
-  final state = Get
-      .find<OrgListLogic>()
-      .state;
+  final state = Get.find<OrgListLogic>().state;
 
   String colorString(Color color) =>
       "#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}";
@@ -27,9 +25,8 @@ class OrgListComponent extends StatelessWidget {
   //         ]),
   //       ),
   //     );
-  OrgListTileComponent _buildItem(Org org) {
-    print(org);
-    return OrgListTileComponent(org: org);
+  OrgListTileComponent _buildItem(int index, Org org) {
+    return OrgListTileComponent(index: index, org: org);
   }
 
   @override
@@ -42,7 +39,9 @@ class OrgListComponent extends StatelessWidget {
           mainAxisSpacing: 12,
           crossAxisSpacing: 20,
           childAspectRatio: 1 / 0.5,
-          children: state.orgList.map((org) => _buildItem(org)).toList(),
+          // children: state.orgList.map((org) => _buildItem(org)).toList(),
+          children: List.generate(
+              state.orgList.length, (i) => _buildItem(i, state.orgList[i])),
           physics: const ScrollPhysics());
     });
   }

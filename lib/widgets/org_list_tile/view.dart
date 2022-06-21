@@ -6,10 +6,12 @@ import 'logic.dart';
 
 class OrgListTileComponent extends StatelessWidget {
   late Org org;
+  late int index;
   final logic = Get.put(OrgListTileLogic());
   final state = Get.find<OrgListTileLogic>().state;
 
-  OrgListTileComponent({Key? key, required this.org}) : super(key: key);
+  OrgListTileComponent({Key? key, required this.index, required this.org})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +67,7 @@ class OrgListTileComponent extends StatelessWidget {
                         style: TextStyle(color: Colors.red)),
                     onPressed: () {
                       /* ... */
+                      logic.deleteOrg(index);
                     },
                   ),
                   // const SizedBox(width: 8),

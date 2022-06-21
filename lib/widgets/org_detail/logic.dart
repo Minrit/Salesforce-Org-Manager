@@ -16,6 +16,7 @@ class OrgDetailLogic extends GetxController {
         domain: state.domainController.text);
     final orgListLogic = Get.find<OrgListLogic>();
     orgListLogic.addOrg(org);
+    Get.back();
   }
 
   void onCheckboxChange(v) {
