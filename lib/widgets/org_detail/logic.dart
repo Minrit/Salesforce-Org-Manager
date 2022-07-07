@@ -8,15 +8,21 @@ import 'state.dart';
 class OrgDetailLogic extends GetxController {
   final OrgDetailState state = OrgDetailState();
 
-  void create() {
-    print('login');
-    print(state.nameController.text);
-    print(state.domainController.text);
-    print(state.checkboxState);
-    var org = Org(state.nameController.text, state.checkboxState,
-        domain: state.domainController.text, userList: state.userList);
+  void handleDone() {
     final orgListLogic = Get.find<OrgListLogic>();
-    orgListLogic.addOrg(org);
+    if (Get.arguments['editMode']) {
+      var org = Org(state.nameController.text, state.checkboxState,
+          domain: state.domainController.text, userList: state.userList);
+      print(Get.arguments['index']);
+      orgListLogic.updateOrgList(org, index: Get.arguments['index']);
+    } else {
+      print(state.nameController.text);
+      print(state.domainController.text);
+      print(state.checkboxState);
+      var org = Org(state.nameController.text, state.checkboxState,
+          domain: state.domainController.text, userList: state.userList);
+      orgListLogic.updateOrgList(org);
+    }
     Get.back();
   }
 
@@ -45,6 +51,15 @@ class OrgDetailLogic extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
+    if (Get.arguments['editMode']) {
+      var org = Get.arguments['org'] as Org;
+      state.nameController.text = org.name;
+      state.domainController.text = org.domain ?? '';
+      state.checkboxState = org.isProduction;
+      state.userList = org.userList ?? [];
+      state.org = org;
+      update();
+    }
     super.onReady();
   }
 

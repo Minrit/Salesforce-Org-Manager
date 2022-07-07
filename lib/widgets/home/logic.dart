@@ -17,7 +17,7 @@ class HomeLogic extends GetxController {
     super.onClose();
   }
 
-  void goToDetail(){
-    Get.toNamed("/org_detail");
+  void goToDetail() {
+    Get.toNamed("/org_detail", arguments: {'editMode': false});
   }
 }

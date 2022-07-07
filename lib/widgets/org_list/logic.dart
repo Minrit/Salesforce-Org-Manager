@@ -1,4 +1,3 @@
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sf_org_manager/common/get_storage_key.dart';
@@ -24,18 +23,20 @@ class OrgListLogic extends GetxController {
           .toList();
       state.orgList = orgList;
     }
-    print('run sfl');
     update();
     super.onReady();
   }
 
-  void addOrg(Org org) {
-    state.orgList.add(org);
+  void updateOrgList(Org org, {int index = -1}) {
+    if (index != -1) {
+      state.orgList[index] = org;
+    } else {
+      state.orgList.add(org);
+    }
     // var jsonString = jsonEncode(state.orgList.map((e) => e.toJson()).toList());
     // final box = GetStorage();
     // box.write(GetStorageKey.localOrgs, jsonString);
     StorageUtils.storeOrgList(state.orgList);
-    print('added');
     update();
   }
 

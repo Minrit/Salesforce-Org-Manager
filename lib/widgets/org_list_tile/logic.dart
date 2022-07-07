@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,6 +19,17 @@ class OrgListTileLogic extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
+  }
+
+  Widget renderPrimaryUser(Org org) {
+    var userList = org.userList;
+    if (userList != null) {
+      if (userList.isNotEmpty) {
+        return Text(userList[0].username);
+      }
+      return Text('');
+    }
+    return Text('');
   }
 
   void deleteOrg(int index) {

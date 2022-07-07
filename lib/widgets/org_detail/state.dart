@@ -9,6 +9,7 @@ class OrgDetailState {
   final domainController = TextEditingController();
   bool checkboxState = false;
   List<Org> orgList = [];
+  late Org org;
   List<User> userList = [];
 
   OrgDetailState() {

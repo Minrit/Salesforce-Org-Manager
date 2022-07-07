@@ -24,7 +24,7 @@ class OrgDetailPage extends StatelessWidget {
             Padding(
                 padding: EdgeInsets.only(right: 20.0),
                 child: GestureDetector(
-                  onTap: logic.create,
+                  onTap: logic.handleDone,
                   child: Icon(
                     Icons.done,
                     size: 26.0,
@@ -51,7 +51,7 @@ class OrgDetailPage extends StatelessWidget {
                         controller: state.domainController,
                         decoration: const InputDecoration(labelText: 'Domain'),
                         // validator: controller.validator,
-                        obscureText: true,
+                        obscureText: false,
                       ),
                       Row(children: [
                         Flexible(
