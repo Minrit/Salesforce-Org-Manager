@@ -8,7 +8,9 @@ class OrgListTileComponent extends StatelessWidget {
   late Org org;
   late int index;
   final logic = Get.put(OrgListTileLogic());
-  final state = Get.find<OrgListTileLogic>().state;
+  final state = Get
+      .find<OrgListTileLogic>()
+      .state;
 
   OrgListTileComponent({Key? key, required this.index, required this.org})
       : super(key: key);
@@ -46,7 +48,9 @@ class OrgListTileComponent extends StatelessWidget {
                         ]),
                     Text(org.domain ?? '-'),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          logic.openOrg(org);
+                        },
                         child: Text(org.userList?[0].username ?? ''),
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,

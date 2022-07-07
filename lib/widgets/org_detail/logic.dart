@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../models/org.dart';
+import '../../models/user.dart';
 import '../org_list/logic.dart';
 import 'state.dart';
 
@@ -13,7 +14,7 @@ class OrgDetailLogic extends GetxController {
     print(state.domainController.text);
     print(state.checkboxState);
     var org = Org(state.nameController.text, state.checkboxState,
-        domain: state.domainController.text);
+        domain: state.domainController.text, userList: state.userList);
     final orgListLogic = Get.find<OrgListLogic>();
     orgListLogic.addOrg(org);
     Get.back();
@@ -21,6 +22,11 @@ class OrgDetailLogic extends GetxController {
 
   void addUser() {
     Get.toNamed("/user_detail");
+  }
+
+  void handleAddUserDone(User user) {
+    state.userList.add(user);
+    update();
   }
 
   void onCheckboxChange(v) {

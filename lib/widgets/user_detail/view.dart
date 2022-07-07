@@ -17,7 +17,7 @@ class UserDetailPage extends StatelessWidget {
             Padding(
                 padding: EdgeInsets.only(right: 20.0),
                 child: GestureDetector(
-                  onTap: logic.create,
+                  onTap: logic.handleDone,
                   child: Icon(
                     Icons.done,
                     size: 26.0,
@@ -33,12 +33,12 @@ class UserDetailPage extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
-                  // controller: state.nameController,
+                  controller: state.usernameController,
                   decoration: const InputDecoration(labelText: 'User Name'),
                   // validator: controller.validator,
                 ),
                 TextFormField(
-                  // controller: state.domainController,
+                  controller: state.passwordController,
                   decoration: const InputDecoration(labelText: 'Password'),
                   // validator: controller.validator,
                   obscureText: true,
