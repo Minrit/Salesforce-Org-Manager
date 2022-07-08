@@ -10,6 +10,12 @@ class UserDetailLogic extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
+    if (Get.arguments['editMode']) {
+      var user = Get.arguments['user'] as User;
+      state.usernameController.text = user.username;
+      state.passwordController.text = user.password;
+      update();
+    }
     super.onReady();
   }
 
@@ -24,8 +30,17 @@ class UserDetailLogic extends GetxController {
     print(state.usernameController.text);
     print(state.passwordController.text);
     final orgDetailLogic = Get.find<OrgDetailLogic>();
-    orgDetailLogic.handleAddUserDone(
-        User(state.usernameController.text, state.passwordController.text));
+    if (Get.arguments['editMode']) {
+      var user =
+          User(state.usernameController.text, state.passwordController.text);
+      orgDetailLogic.handleUserDone(user, index: Get.arguments['index']);
+    } else {
+      var user =
+          User(state.usernameController.text, state.passwordController.text);
+      orgDetailLogic.handleUserDone(user);
+    }
+    // orgDetailLogic.handleAddUserDone(
+    //     User(state.usernameController.text, state.passwordController.text));
     Get.back();
   }
 }

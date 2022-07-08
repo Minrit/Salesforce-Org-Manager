@@ -6,9 +6,7 @@ import 'logic.dart';
 
 class UserTileComponent extends StatelessWidget {
   final logic = Get.put(UserTileLogic());
-  final state = Get
-      .find<UserTileLogic>()
-      .state;
+  final state = Get.find<UserTileLogic>().state;
 
   late User user;
   late int index;
@@ -21,7 +19,10 @@ class UserTileComponent extends StatelessWidget {
         height: 95,
         width: 300,
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.toNamed('user_detail',
+                arguments: {'user': user, 'editMode': true, 'index': index});
+          },
           child: Card(
             child: Padding(
               padding: const EdgeInsets.all(8.0),

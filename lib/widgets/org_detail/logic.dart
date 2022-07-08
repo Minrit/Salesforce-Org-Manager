@@ -22,11 +22,15 @@ class OrgDetailLogic extends GetxController {
   }
 
   void addUser() {
-    Get.toNamed("/user_detail");
+    Get.toNamed("/user_detail", arguments: {'editMode': false});
   }
 
-  void handleAddUserDone(User user) {
-    state.userList.add(user);
+  void handleUserDone(User user, {int index = -1}) {
+    if (index != -1) {
+      state.userList[index] = user;
+    } else {
+      state.userList.add(user);
+    }
     update();
   }
 

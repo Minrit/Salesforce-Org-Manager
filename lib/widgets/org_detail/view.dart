@@ -44,6 +44,7 @@ class OrgDetailPage extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(16.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Form(
                     key: state.loginFormKey,
@@ -86,6 +87,7 @@ class OrgDetailPage extends StatelessWidget {
                   Wrap(
                     direction: Axis.horizontal,
                     alignment: WrapAlignment.start,
+                    crossAxisAlignment: WrapCrossAlignment.start,
                     children: List.generate(state.userList.length,
                         (i) => _buildItem(state.userList[i], i)),
                   )
