@@ -13,17 +13,12 @@ class OrgDetailLogic extends GetxController {
     if (Get.arguments['editMode']) {
       var org = Org(state.nameController.text, state.checkboxState,
           domain: state.domainController.text, userList: state.userList);
-      print(Get.arguments['index']);
       orgListLogic.updateOrgList(org, index: Get.arguments['index']);
     } else {
-      print(state.nameController.text);
-      print(state.domainController.text);
-      print(state.checkboxState);
       var org = Org(state.nameController.text, state.checkboxState,
           domain: state.domainController.text, userList: state.userList);
       orgListLogic.updateOrgList(org);
     }
-    Get.back();
   }
 
   void addUser() {
@@ -46,6 +41,11 @@ class OrgDetailLogic extends GetxController {
     print('validate');
     print(v);
     return '';
+  }
+
+  void deleteUser(int index) {
+    state.userList.removeAt(index);
+    update();
   }
 
   @override

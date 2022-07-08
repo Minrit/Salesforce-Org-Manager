@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../org_detail/logic.dart';
 import 'state.dart';
 
 class UserTileLogic extends GetxController {
@@ -15,5 +16,10 @@ class UserTileLogic extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
+  }
+
+  void deleteUser(int index){
+    var orgDetailLogic = Get.find<OrgDetailLogic>();
+    orgDetailLogic.deleteUser(index);
   }
 }

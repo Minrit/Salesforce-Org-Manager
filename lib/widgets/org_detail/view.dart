@@ -16,73 +16,85 @@ class OrgDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<OrgDetailLogic>(builder: (logic) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('New Org'),
-          actions: <Widget>[
-            Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                  onTap: logic.handleDone,
-                  child: Icon(
-                    Icons.done,
-                    size: 26.0,
-                  ),
-                )),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Form(
-                  key: state.loginFormKey,
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextFormField(
-                        controller: state.nameController,
-                        decoration: const InputDecoration(labelText: 'Name'),
-                        // validator: controller.validator,
-                      ),
-                      TextFormField(
-                        controller: state.domainController,
-                        decoration: const InputDecoration(labelText: 'Domain'),
-                        // validator: controller.validator,
-                        obscureText: false,
-                      ),
-                      Row(children: [
-                        Flexible(
-                          child: CheckboxFormField(
-                              title: Text('Is Production'),
-                              // onSaved: logic.onCheckboxChange,
-                              validator: logic.checkboxValidator,
-                              onChanged: logic.onCheckboxChange,
-                              initialValue: state.checkboxState),
+    return WillPopScope(
+      onWillPop: () async {
+        return Future.value(false);
+      },
+      child: GetBuilder<OrgDetailLogic>(builder: (logic) {
+        return Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title: Text('New Org'),
+            actions: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      logic.handleDone();
+                      Get.back();
+                    },
+                    child: Icon(
+                      Icons.done,
+                      size: 26.0,
+                    ),
+                  )),
+            ],
+          ),
+          body: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Form(
+                    key: state.loginFormKey,
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextFormField(
+                          controller: state.nameController,
+                          decoration: const InputDecoration(labelText: 'Name'),
+                          // validator: controller.validator,
                         ),
-                        ElevatedButton(
-                          child: Text('Add User'),
-                          onPressed: logic.addUser,
-                        )
-                      ]),
-                      // ElevatedButton(
-                      //   child: Text('Create'),
-                      //   onPressed: logic.create,
-                      // )
-                    ],
+                        TextFormField(
+                          controller: state.domainController,
+                          decoration:
+                              const InputDecoration(labelText: 'Domain'),
+                          // validator: controller.validator,
+                          obscureText: false,
+                        ),
+                        Row(children: [
+                          Flexible(
+                            child: CheckboxFormField(
+                                title: Text('Is Production'),
+                                // onSaved: logic.onCheckboxChange,
+                                validator: logic.checkboxValidator,
+                                onChanged: logic.onCheckboxChange,
+                                initialValue: state.checkboxState),
+                          ),
+                          ElevatedButton(
+                            child: Text('Add User'),
+                            onPressed: logic.addUser,
+                          )
+                        ]),
+                        // ElevatedButton(
+                        //   child: Text('Create'),
+                        //   onPressed: logic.create,
+                        // )
+                      ],
+                    ),
                   ),
-                ),
-                Column(
-                  children: List.generate(state.userList.length,
-                      (i) => _buildItem(state.userList[i], i)),
-                )
-              ],
+                  Wrap(
+                    direction: Axis.horizontal,
+                    alignment: WrapAlignment.start,
+                    children: List.generate(state.userList.length,
+                        (i) => _buildItem(state.userList[i], i)),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      }),
+    );
   }
 }

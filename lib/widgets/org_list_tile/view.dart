@@ -15,8 +15,9 @@ class OrgListTileComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 60,
+    return SizedBox(
+        height: 140,
+        width: 300,
         child: GestureDetector(
           onTap: () {
             Get.toNamed('org_detail',

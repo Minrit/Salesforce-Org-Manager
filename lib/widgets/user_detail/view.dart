@@ -12,6 +12,7 @@ class UserDetailPage extends StatelessWidget {
     return GetBuilder<UserDetailLogic>(builder: (logic) {
       return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text('User Detail'),
           actions: <Widget>[
             Padding(
