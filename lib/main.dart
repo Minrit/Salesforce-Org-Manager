@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sf_org_manager/widgets/org_detail/view.dart';
 import 'package:sf_org_manager/widgets/user_detail/view.dart';
+import 'package:sizer/sizer.dart';
 
 import 'widgets/home/view.dart';
 
@@ -18,19 +19,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(initialRoute: '/', getPages: [
-      GetPage(
-        name: '/',
-        page: () => HomePage(),
-      ),
-      GetPage(
-        name: '/org_detail',
-        page: () => OrgDetailPage(),
-      ),
-      GetPage(
-        name: '/user_detail',
-        page: () => UserDetailPage(),
-      ),
-    ]);
+    return Sizer(builder: (context, orientation, deviceType) {
+      return GetMaterialApp(initialRoute: '/', getPages: [
+        GetPage(
+          name: '/',
+          page: () => HomePage(),
+        ),
+        GetPage(
+          name: '/org_detail',
+          page: () => OrgDetailPage(),
+        ),
+        GetPage(
+          name: '/user_detail',
+          page: () => UserDetailPage(),
+        ),
+      ]);
+    });
   }
 }

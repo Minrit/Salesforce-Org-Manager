@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../models/user.dart';
 import 'logic.dart';
@@ -16,8 +17,8 @@ class UserTileComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 95,
-        width: 285,
+        height: 106,
+        width: 100.w > 400 ? 47.5.w : 100.w,
         child: GestureDetector(
           onTap: () {
             Get.toNamed('user_detail',

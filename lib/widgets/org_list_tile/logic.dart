@@ -48,4 +48,8 @@ class OrgListTileLogic extends GetxController {
         '$domain/?un=${org.userList![0].username}&pw=${org.userList![0].password}');
     launchUrl(url);
   }
+
+  double setHeight(context) {
+    return MediaQuery.of(context).size.height * 0.2;
+  }
 }

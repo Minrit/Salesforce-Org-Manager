@@ -39,6 +39,7 @@ dependencies:
   url_launcher: ^6.1.2
   json_serializable: ^6.2.0
   build_runner: ^2.1.11
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:

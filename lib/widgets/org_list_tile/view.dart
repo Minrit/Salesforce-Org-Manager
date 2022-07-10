@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../models/org.dart';
 import 'logic.dart';
@@ -16,8 +17,8 @@ class OrgListTileComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 140,
-        width: 300,
+        height: 156,
+        width: 100.w > 400 ? 50.w : 100.w,
         child: GestureDetector(
           onTap: () {
             Get.toNamed('org_detail',
@@ -50,7 +51,19 @@ class OrgListTileComponent extends StatelessWidget {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600, fontSize: 16)),
                           ]),
-                      Text(org.domain ?? '-'),
+                      Row(
+                        children: <Widget>[
+                          Icon(Icons.copy, size: 16),
+                          SizedBox(
+                            width: 30.w,
+                            child: Text(
+                              org.domain ?? '-',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ),
+                        ],
+                      ),
                       TextButton(
                           onPressed: () {
                             logic.openOrg(org);
