@@ -54,8 +54,9 @@ class OrgListTileComponent extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Icon(Icons.copy, size: 16),
+                          const SizedBox(width: 4),
                           SizedBox(
-                            width: 30.w,
+                            width: 100.w > 400 ? (47.5.w * 0.9) : (100.w * 0.8),
                             child: Text(
                               org.domain ?? '-',
                               overflow: TextOverflow.ellipsis,
