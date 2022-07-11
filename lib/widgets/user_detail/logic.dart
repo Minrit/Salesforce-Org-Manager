@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sf_org_manager/models/user.dart';
+import 'package:sf_org_manager/utils/form_utils.dart';
 
 import '../org_detail/logic.dart';
 import 'state.dart';
@@ -26,21 +27,26 @@ class UserDetailLogic extends GetxController {
   }
 
   void handleDone() {
-    print('user done');
-    print(state.usernameController.text);
-    print(state.passwordController.text);
-    final orgDetailLogic = Get.find<OrgDetailLogic>();
-    if (Get.arguments['editMode']) {
-      var user =
-          User(state.usernameController.text, state.passwordController.text);
-      orgDetailLogic.handleUserDone(user, index: Get.arguments['index']);
-    } else {
-      var user =
-          User(state.usernameController.text, state.passwordController.text);
-      orgDetailLogic.handleUserDone(user);
+    if (state.userFormKey.currentState!.validate()) {
+      final orgDetailLogic = Get.find<OrgDetailLogic>();
+      if (Get.arguments['editMode']) {
+        var user =
+            User(state.usernameController.text, state.passwordController.text);
+        orgDetailLogic.handleUserDone(user, index: Get.arguments['index']);
+      } else {
+        var user =
+            User(state.usernameController.text, state.passwordController.text);
+        orgDetailLogic.handleUserDone(user);
+      }
+      Get.back();
     }
-    // orgDetailLogic.handleAddUserDone(
-    //     User(state.usernameController.text, state.passwordController.text));
-    Get.back();
+  }
+
+  String? usernameValidator(v) {
+    return FormUtils.isFieldEmpty(v, 'Please enter a username');
+  }
+
+  String? passwordValidator(v) {
+    return FormUtils.isFieldEmpty(v, 'Please enter a password');
   }
 }

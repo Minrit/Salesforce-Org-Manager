@@ -33,19 +33,19 @@ class UserDetailPage extends StatelessWidget {
           body: Container(
             padding: const EdgeInsets.all(16.0),
             child: Form(
-              // key: state.loginFormKey,
+              key: state.userFormKey,
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextFormField(
                     controller: state.usernameController,
                     decoration: const InputDecoration(labelText: 'User Name'),
-                    // validator: controller.validator,
+                    validator: logic.usernameValidator,
                   ),
                   TextFormField(
                     controller: state.passwordController,
                     decoration: const InputDecoration(labelText: 'Password'),
-                    // validator: controller.validator,
+                    validator: logic.passwordValidator,
                     obscureText: true,
                   ),
                   // ElevatedButton(

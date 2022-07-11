@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sf_org_manager/widgets/user_tile/view.dart';
 
 import '../../models/user.dart';
+import '../../utils/form_utils.dart';
 import '../checkbox_form_field.dart';
 import 'logic.dart';
 
@@ -57,10 +58,7 @@ class OrgDetailPage extends StatelessWidget {
                           controller: state.nameController,
                           decoration: const InputDecoration(labelText: 'Name'),
                           validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
-                            }
-                            return null;
+                            return FormUtils.isFieldEmpty(value, 'Please enter an org name');
                           },
                         ),
                         TextFormField(
@@ -69,7 +67,7 @@ class OrgDetailPage extends StatelessWidget {
                               const InputDecoration(labelText: 'Domain'),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter a domain';
+                              return 'Please enter a valid domain';
                             } else {
                               if (Uri.parse(value).isAbsolute) {
                                 return null;
