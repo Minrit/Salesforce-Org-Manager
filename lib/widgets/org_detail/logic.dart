@@ -22,6 +22,7 @@ class OrgDetailLogic extends GetxController {
   }
 
   void addUser() {
+    print(state.loginFormKey.currentState!.validate());
     Get.toNamed("/user_detail", arguments: {'editMode': false});
   }
 

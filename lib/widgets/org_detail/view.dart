@@ -30,8 +30,10 @@ class OrgDetailPage extends StatelessWidget {
                   padding: EdgeInsets.only(right: 20.0),
                   child: GestureDetector(
                     onTap: () {
-                      logic.handleDone();
-                      Get.back();
+                      if (state.loginFormKey.currentState!.validate()) {
+                        logic.handleDone();
+                        Get.back();
+                      }
                     },
                     child: Icon(
                       Icons.done,
@@ -54,13 +56,28 @@ class OrgDetailPage extends StatelessWidget {
                         TextFormField(
                           controller: state.nameController,
                           decoration: const InputDecoration(labelText: 'Name'),
-                          // validator: controller.validator,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
+                          },
                         ),
                         TextFormField(
                           controller: state.domainController,
                           decoration:
                               const InputDecoration(labelText: 'Domain'),
-                          // validator: controller.validator,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a domain';
+                            } else {
+                              if (Uri.parse(value).isAbsolute) {
+                                return null;
+                              } else {
+                                return 'Please enter a valid domain';
+                              }
+                            }
+                          },
                           obscureText: false,
                         ),
                         Row(children: [
@@ -68,7 +85,7 @@ class OrgDetailPage extends StatelessWidget {
                             child: CheckboxFormField(
                                 title: Text('Is Production'),
                                 // onSaved: logic.onCheckboxChange,
-                                validator: logic.checkboxValidator,
+                                // validator: logic.checkboxValidator,
                                 onChanged: logic.onCheckboxChange,
                                 initialValue: state.checkboxState),
                           ),
