@@ -51,6 +51,7 @@ class OrgDetailLogic extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
+    state.domainController.text = 'https://test.salesforce.com';
     if (Get.arguments['editMode']) {
       var org = Get.arguments['org'] as Org;
       state.nameController.text = org.name;
@@ -59,7 +60,6 @@ class OrgDetailLogic extends GetxController {
       state.userList = org.userList ?? [];
       state.org = org;
     }
-    state.nameController.text = 'https://test.salesforce.com';
     update();
     super.onReady();
   }

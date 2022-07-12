@@ -43,10 +43,10 @@ class UserDetailLogic extends GetxController {
   }
 
   String? usernameValidator(v) {
-    return FormUtils.isFieldEmpty(v, 'Please enter a username');
+    return FormUtils.validateEmail(v);
   }
 
   String? passwordValidator(v) {
-    return FormUtils.isFieldEmpty(v, 'Please enter a password');
+    return FormUtils.isFieldEmpty(v, 'Please enter a username');
   }
 }
