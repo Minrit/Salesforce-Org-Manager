@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
@@ -18,7 +19,7 @@ class OrgListTileComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         height: 156,
-        width: 100.w > 400 ? 50.w : 100.w,
+        width: 100.w > 428.1 ? 50.w : 100.w,
         child: GestureDetector(
           onTap: () {
             Get.toNamed('org_detail',
@@ -53,10 +54,15 @@ class OrgListTileComponent extends StatelessWidget {
                           ]),
                       Row(
                         children: <Widget>[
-                          Icon(Icons.copy, size: 16),
+                          GestureDetector(
+                              onTap: () {
+                                Clipboard.setData(ClipboardData(
+                                    text: org.domain ?? 'No Domain'));
+                              },
+                              child: Icon(Icons.copy, size: 16)),
                           const SizedBox(width: 4),
                           SizedBox(
-                            width: 100.w > 400 ? (47.5.w * 0.8) : (100.w * 0.7),
+                            width: 100.w > 428.1 ? (47.5.w * 0.8) : (100.w * 0.7),
                             child: Text(
                               org.domain ?? '-',
                               overflow: TextOverflow.ellipsis,

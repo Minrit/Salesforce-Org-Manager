@@ -35,15 +35,11 @@ class OrgDetailLogic extends GetxController {
   }
 
   void onCheckboxChange(v) {
-    print('change');
-    print(v);
     state.checkboxState = v;
     update();
   }
 
   String? checkboxValidator(v) {
-    print('validate');
-    print(v);
     return '';
   }
 
@@ -62,8 +58,9 @@ class OrgDetailLogic extends GetxController {
       state.checkboxState = org.isProduction;
       state.userList = org.userList ?? [];
       state.org = org;
-      update();
     }
+    state.nameController.text = 'https://test.salesforce.com';
+    update();
     super.onReady();
   }
 

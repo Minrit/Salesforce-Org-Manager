@@ -25,7 +25,7 @@ class OrgDetailPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            title: Text('New Org'),
+            title: Text('Org Detail'),
             actions: <Widget>[
               Padding(
                   padding: EdgeInsets.only(right: 20.0),
