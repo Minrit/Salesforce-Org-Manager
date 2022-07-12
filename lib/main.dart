@@ -1,14 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sf_org_manager/widgets/org_detail/view.dart';
 import 'package:sf_org_manager/widgets/user_detail/view.dart';
 import 'package:sizer/sizer.dart';
+import 'package:window_size/window_size.dart';
 
 import 'widgets/home/view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    setWindowMinSize(const Size(600, 300));
+    setWindowMaxSize(Size.infinite);
+  }
   await GetStorage.init();
   runApp(const MyApp());
 }

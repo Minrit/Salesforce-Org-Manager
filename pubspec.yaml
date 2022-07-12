@@ -40,6 +40,10 @@ dependencies:
   json_serializable: ^6.2.0
   build_runner: ^2.1.11
   sizer: ^2.0.15
+  window_size:
+    git:
+      url: git://github.com/google/flutter-desktop-embedding.git
+      path: plugins/window_size
 
 dev_dependencies:
   flutter_test:
