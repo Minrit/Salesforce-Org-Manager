@@ -1,4 +1,6 @@
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../models/org.dart';
 import '../../models/user.dart';
@@ -46,6 +48,16 @@ class OrgDetailLogic extends GetxController {
   void deleteUser(int index) {
     state.userList.removeAt(index);
     update();
+  }
+
+  void openOrg(int index){
+    var domain = state.domainController.text;
+    // Salesforce org domain example are shown as below:
+    // https://login.salesforce.com/?un=daniel@example.com&pw=hunter12
+    var url = Uri.parse(
+        '$domain/?un=${state.userList[index].username}&pw=${state.userList[index].password}');
+    Clipboard.setData(ClipboardData(text: state.userList[index].password));
+    launchUrl(url);
   }
 
   @override

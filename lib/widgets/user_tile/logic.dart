@@ -22,4 +22,11 @@ class UserTileLogic extends GetxController {
     var orgDetailLogic = Get.find<OrgDetailLogic>();
     orgDetailLogic.deleteUser(index);
   }
+
+  void openOrg(int index){
+
+    var orgDetailLogic = Get.find<OrgDetailLogic>();
+    orgDetailLogic.openOrg(index);
+  }
+
 }

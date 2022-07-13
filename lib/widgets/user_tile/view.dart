@@ -36,6 +36,13 @@ class UserTileComponent extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         TextButton(
+                          child: const Text('Open',
+                              style: TextStyle(color: Colors.blue)),
+                          onPressed: () {
+                            logic.openOrg(index);
+                          },
+                        ),
+                        TextButton(
                           child: const Text('DELETE',
                               style: TextStyle(color: Colors.red)),
                           onPressed: () {
