@@ -14,13 +14,14 @@ class UserTileComponent extends StatelessWidget {
   late int index;
   late bool showPassword;
 
-  UserTileComponent(this.user, this.index, this.showPassword, {Key? key}) : super(key: key);
+  UserTileComponent(this.user, this.index, this.showPassword, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UserTileLogic>(builder: (logic) {
       return SizedBox(
-          height: 106,
+          height: 110,
           width: 100.w > 400 ? 47.5.w : 100.w,
           child: GestureDetector(
             onTap: () {
@@ -36,32 +37,16 @@ class UserTileComponent extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          GestureDetector(
-                              onTap: () {
+                          TextButton(
+                              onPressed: () {
                                 Clipboard.setData(
                                     ClipboardData(text: user.username));
                               },
-                              child: Icon(Icons.copy, size: 14)),
-                          SizedBox(width: 5),
-                          Text(user.username),
+                              child: Text(user.username)),
                         ],
                       ),
                       Row(
                         children: <Widget>[
-                          GestureDetector(
-                              onTap: () {
-                                Clipboard.setData(
-                                    ClipboardData(text: user.password));
-                              },
-                              child: Icon(Icons.copy, size: 14)),
-                          SizedBox(width: 5),
-                          Text(showPassword
-                              ? user.password
-                              : user.password.runes
-                                  .map((rune) => "*")
-                                  .toList()
-                                  .join()),
-                          SizedBox(width: 5),
                           GestureDetector(
                               onTap: () {
                                 logic.togglePassword(index);
@@ -71,13 +56,25 @@ class UserTileComponent extends StatelessWidget {
                                       ? Icons.visibility
                                       : Icons.visibility_off,
                                   size: 14)),
+                          TextButton(
+                            onPressed: () {
+                              Clipboard.setData(
+                                  ClipboardData(text: user.password));
+                            },
+                            child: Text(showPassword
+                                ? user.password
+                                : user.password.runes
+                                    .map((rune) => "*")
+                                    .toList()
+                                    .join()),
+                          ),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           TextButton(
-                            child: const Text('Open',
+                            child: const Text('OPEN',
                                 style: TextStyle(color: Colors.blue)),
                             onPressed: () {
                               logic.openOrg(index);
