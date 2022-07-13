@@ -27,20 +27,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
-      return GetMaterialApp(initialRoute: '/', getPages: [
-        GetPage(
-          name: '/',
-          page: () => HomePage(),
-        ),
-        GetPage(
-          name: '/org_detail',
-          page: () => OrgDetailPage(),
-        ),
-        GetPage(
-          name: '/user_detail',
-          page: () => UserDetailPage(),
-        ),
-      ]);
+      return GetMaterialApp(
+        initialRoute: '/',
+        getPages: [
+          GetPage(
+            name: '/',
+            page: () => HomePage(),
+          ),
+          GetPage(
+            name: '/org_detail',
+            page: () => OrgDetailPage(),
+          ),
+          GetPage(
+            name: '/user_detail',
+            page: () => UserDetailPage(),
+          ),
+        ],
+        debugShowCheckedModeBanner: false,
+      );
     });
   }
 }

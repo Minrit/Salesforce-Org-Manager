@@ -1,16 +1,7 @@
-# sf_org_manager_2
+# Salesforce Org Manager
 
-Salesforce Org Manager 2
+An app for the Salesforce Developers to easily manage Salesforce Orgs.
 
-## Getting Started
+## Introduction
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+As a Salesforce developer, we always need to manage a lot of orgs and different users with different personas. So how to manage them becomes an annoying stuff. This app is aimed to solve this problem. 
