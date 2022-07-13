@@ -18,15 +18,18 @@ class UserTileLogic extends GetxController {
     super.onClose();
   }
 
-  void deleteUser(int index){
+  void deleteUser(int index) {
     var orgDetailLogic = Get.find<OrgDetailLogic>();
     orgDetailLogic.deleteUser(index);
   }
 
-  void openOrg(int index){
-
+  void openOrg(int index) {
     var orgDetailLogic = Get.find<OrgDetailLogic>();
     orgDetailLogic.openOrg(index);
   }
 
+  void togglePassword(index) {
+    var orgDetailLogic = Get.find<OrgDetailLogic>();
+    orgDetailLogic.togglePassword(index);
+  }
 }

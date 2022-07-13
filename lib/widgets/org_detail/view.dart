@@ -12,7 +12,7 @@ class OrgDetailPage extends StatelessWidget {
   final state = Get.find<OrgDetailLogic>().state;
 
   UserTileComponent _buildItem(User user, int index) {
-    return UserTileComponent(user, index);
+    return UserTileComponent(user, index, state.showUserPasswordList[index]);
   }
 
   @override
@@ -58,7 +58,8 @@ class OrgDetailPage extends StatelessWidget {
                           controller: state.nameController,
                           decoration: const InputDecoration(labelText: 'Name'),
                           validator: (value) {
-                            return FormUtils.isFieldEmpty(value, 'Please enter an org name');
+                            return FormUtils.isFieldEmpty(
+                                value, 'Please enter an org name');
                           },
                         ),
                         TextFormField(

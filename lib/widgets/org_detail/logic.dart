@@ -32,6 +32,7 @@ class OrgDetailLogic extends GetxController {
       state.userList[index] = user;
     } else {
       state.userList.add(user);
+      state.showUserPasswordList.add(false);
     }
     update();
   }
@@ -47,6 +48,7 @@ class OrgDetailLogic extends GetxController {
 
   void deleteUser(int index) {
     state.userList.removeAt(index);
+    state.showUserPasswordList.removeAt(index);
     update();
   }
 
@@ -60,6 +62,11 @@ class OrgDetailLogic extends GetxController {
     launchUrl(url);
   }
 
+  void togglePassword(int index){
+    state.showUserPasswordList[index] = !state.showUserPasswordList[index];
+    update();
+  }
+
   @override
   void onReady() {
     // TODO: implement onReady
@@ -71,6 +78,9 @@ class OrgDetailLogic extends GetxController {
       state.checkboxState = org.isProduction;
       state.userList = org.userList ?? [];
       state.org = org;
+    }
+    for(var i = 0; i < state.userList.length; i++){
+      state.showUserPasswordList.add(false);
     }
     update();
     super.onReady();

@@ -11,6 +11,7 @@ class OrgDetailState {
   List<Org> orgList = [];
   late Org org;
   List<User> userList = [];
+  List<bool> showUserPasswordList = [];
 
   OrgDetailState() {
     ///Initialize variables
