@@ -21,7 +21,6 @@ class UserTileComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<UserTileLogic>(builder: (logic) {
       return SizedBox(
-          height: 110,
           width: 100.w > 400 ? 47.5.w : 100.w,
           child: GestureDetector(
             onTap: () {

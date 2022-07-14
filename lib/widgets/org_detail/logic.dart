@@ -71,7 +71,6 @@ class OrgDetailLogic extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
-    print('on ready');
     state.domainController.text = 'https://test.salesforce.com';
     if (Get.arguments['editMode']) {
       var org = Get.arguments['org'] as Org;
