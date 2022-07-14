@@ -18,7 +18,7 @@ class OrgListTileComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 156,
+        // height: 156,
         width: 100.w > 428.1 ? 50.w : 100.w,
         child: GestureDetector(
           onTap: () {
