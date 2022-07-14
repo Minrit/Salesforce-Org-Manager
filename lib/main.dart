@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sf_org_manager/widgets/org_detail/view.dart';
@@ -17,6 +18,8 @@ void main() async {
     setWindowMaxSize(Size.infinite);
   }
   await GetStorage.init();
+  EasyLoading.instance
+    .displayDuration = const Duration(milliseconds: 300);
   runApp(const MyApp());
 }
 
@@ -44,6 +47,7 @@ class MyApp extends StatelessWidget {
           ),
         ],
         debugShowCheckedModeBanner: false,
+        builder: EasyLoading.init(),
       );
     });
   }

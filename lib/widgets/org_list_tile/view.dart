@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
@@ -58,6 +59,7 @@ class OrgListTileComponent extends StatelessWidget {
                               onTap: () {
                                 Clipboard.setData(ClipboardData(
                                     text: org.domain ?? 'No Domain'));
+                                EasyLoading.showSuccess('Copied!');
                               },
                               child: Icon(Icons.copy, size: 16)),
                           const SizedBox(width: 4),

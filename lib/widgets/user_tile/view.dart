@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
@@ -40,6 +41,7 @@ class UserTileComponent extends StatelessWidget {
                               onPressed: () {
                                 Clipboard.setData(
                                     ClipboardData(text: user.username));
+                                EasyLoading.showSuccess('Copied!');
                               },
                               child: Text(user.username)),
                         ],
@@ -59,6 +61,7 @@ class UserTileComponent extends StatelessWidget {
                             onPressed: () {
                               Clipboard.setData(
                                   ClipboardData(text: user.password));
+                              EasyLoading.showSuccess('Copied!');
                             },
                             child: Text(showPassword
                                 ? user.password
