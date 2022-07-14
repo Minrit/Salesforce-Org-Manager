@@ -47,6 +47,7 @@ class OrgDetailLogic extends GetxController {
   }
 
   void deleteUser(int index) {
+    print('delete user');
     state.userList.removeAt(index);
     state.showUserPasswordList.removeAt(index);
     update();
@@ -70,13 +71,15 @@ class OrgDetailLogic extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
+    print('on ready');
     state.domainController.text = 'https://test.salesforce.com';
     if (Get.arguments['editMode']) {
       var org = Get.arguments['org'] as Org;
       state.nameController.text = org.name;
       state.domainController.text = org.domain ?? '';
       state.checkboxState = org.isProduction;
-      state.userList = org.userList ?? [];
+      state.userList = List.from(org.userList ?? []);
+      print(org.userList?.length);
       state.org = org;
     }
     for(var i = 0; i < state.userList.length; i++){

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../models/org.dart';
@@ -14,8 +13,6 @@ class OrgListTileLogic extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
-    print('sdfds');
-    print(100.w);
     super.onReady();
   }
 

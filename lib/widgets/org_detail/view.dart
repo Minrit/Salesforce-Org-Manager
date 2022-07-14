@@ -17,14 +17,10 @@ class OrgDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        return Future.value(false);
-      },
-      child: GetBuilder<OrgDetailLogic>(builder: (logic) {
+    return GetBuilder<OrgDetailLogic>(builder: (logic) {
         return Scaffold(
           appBar: AppBar(
-            automaticallyImplyLeading: false,
+            // automaticallyImplyLeading: false,
             title: Text('Org Detail'),
             actions: <Widget>[
               Padding(
@@ -112,7 +108,6 @@ class OrgDetailPage extends StatelessWidget {
             ),
           ),
         );
-      }),
-    );
+      });
   }
 }
