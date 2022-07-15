@@ -36,52 +36,48 @@ class OrgListTileComponent extends StatelessWidget {
                 //   title: Text(org.name),
                 //   subtitle: Text(org.domain ?? 'No Domain'),
                 // ),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
+                    Widget>[
+                  Row(crossAxisAlignment: CrossAxisAlignment.center, children: <
+                      Widget>[
+                    Icon(org.isProduction ? Icons.cloud : Icons.cloud_outlined,
+                        color: Colors.blue.shade400, size: 16),
+                    const SizedBox(width: 8),
+                    Text(org.name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 16)),
+                  ]),
+                  SizedBox(height: 5),
+                  Row(
                     children: <Widget>[
-                      Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(
-                                org.isProduction
-                                    ? Icons.cloud
-                                    : Icons.cloud_outlined,
-                                color: Colors.blue.shade400,
-                                size: 16),
-                            const SizedBox(width: 8),
-                            Text(org.name,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600, fontSize: 16)),
-                          ]),
-                      Row(
-                        children: <Widget>[
-                          GestureDetector(
-                              onTap: () {
-                                Clipboard.setData(ClipboardData(
-                                    text: org.domain ?? 'No Domain'));
-                                EasyLoading.showSuccess('Copied!');
-                              },
-                              child: Icon(Icons.copy, size: 16)),
-                          const SizedBox(width: 4),
-                          SizedBox(
-                            width: 100.w > 428.1 ? (47.5.w * 0.8) : (100.w * 0.7),
-                            child: Text(
-                              org.domain ?? '-',
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                      TextButton(
-                          onPressed: () {
-                            logic.openOrg(org);
+                      GestureDetector(
+                          onTap: () {
+                            Clipboard.setData(
+                                ClipboardData(text: org.domain ?? 'No Domain'));
+                            EasyLoading.showSuccess('Copied!');
                           },
-                          child: logic.renderPrimaryUser(org),
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                          ))
-                    ]),
+                          child: Icon(Icons.copy, size: 16)),
+                      const SizedBox(width: 4),
+                      SizedBox(
+                        width: 100.w > 428.1 ? (47.5.w * 0.8) : (100.w * 0.7),
+                        child: Text(
+                          org.domain?.replaceAll('https://', '') ?? '-',
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 5),
+                  TextButton(
+                      onPressed: () {
+                        logic.openOrg(org);
+                      },
+                      child: logic.renderPrimaryUser(org),
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                      ))
+                ]),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[

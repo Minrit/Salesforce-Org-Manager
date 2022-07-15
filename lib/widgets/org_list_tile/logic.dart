@@ -52,4 +52,8 @@ class OrgListTileLogic extends GetxController {
   double setHeight(context) {
     return MediaQuery.of(context).size.height * 0.2;
   }
+
+  // Widget renderDomain(domain){
+  //
+  // }
 }
