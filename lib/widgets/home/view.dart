@@ -15,6 +15,17 @@ class HomePage extends StatelessWidget {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: const Text('Org Manager'),
+        actions: <Widget>[
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: logic.export2Json,
+                child: Icon(
+                  Icons.download,
+                  size: 26.0,
+                ),
+              )),
+        ],
       ),
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical, child: OrgListComponent()),

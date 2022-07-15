@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../utils/file_utils.dart';
 import 'state.dart';
 
 class HomeLogic extends GetxController {
@@ -20,4 +21,9 @@ class HomeLogic extends GetxController {
   void goToDetail() {
     Get.toNamed("/org_detail", arguments: {'editMode': false});
   }
+
+  void export2Json(){
+    FileUtils.export2Json();
+  }
+
 }

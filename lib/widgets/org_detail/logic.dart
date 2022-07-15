@@ -78,7 +78,6 @@ class OrgDetailLogic extends GetxController {
       state.domainController.text = org.domain ?? '';
       state.checkboxState = org.isProduction;
       state.userList = List.from(org.userList ?? []);
-      print(org.userList?.length);
       state.org = org;
     }
     for(var i = 0; i < state.userList.length; i++){
