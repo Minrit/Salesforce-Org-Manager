@@ -38,6 +38,11 @@ class UserTileComponent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           TextButton(
+                              style: TextButton.styleFrom(
+                                padding: const EdgeInsets.all(0.0),
+                                // primary: Colors.white,
+                                // textStyle: const TextStyle(fontSize: 20),
+                              ),
                               onPressed: () {
                                 Clipboard.setData(
                                     ClipboardData(text: user.username));
@@ -56,8 +61,15 @@ class UserTileComponent extends StatelessWidget {
                                   showPassword
                                       ? Icons.visibility
                                       : Icons.visibility_off,
-                                  size: 14)),
+                                  size: 14,
+                                  color: Colors.black54)),
+                          SizedBox(width: 5),
                           TextButton(
+                            style: TextButton.styleFrom(
+                              padding: const EdgeInsets.all(0.0),
+                              // primary: Colors.white,
+                              // textStyle: const TextStyle(fontSize: 20),
+                            ),
                             onPressed: () {
                               Clipboard.setData(
                                   ClipboardData(text: user.password));

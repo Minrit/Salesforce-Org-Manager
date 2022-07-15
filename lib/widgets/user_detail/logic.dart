@@ -11,12 +11,15 @@ class UserDetailLogic extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
+    state.personaController.text = 'Admin';
     if (Get.arguments['editMode']) {
       var user = Get.arguments['user'] as User;
       state.usernameController.text = user.username;
       state.passwordController.text = user.password;
-      update();
+      state.personaController.text = user.persona ?? '';
+      state.securityTokenController.text = user.securityToken ?? '';
     }
+    update();
     super.onReady();
   }
 
@@ -29,13 +32,13 @@ class UserDetailLogic extends GetxController {
   void handleDone() {
     if (state.userFormKey.currentState!.validate()) {
       final orgDetailLogic = Get.find<OrgDetailLogic>();
+      var user = User(
+          state.usernameController.text, state.passwordController.text,
+          persona: state.personaController.text,
+          securityToken: state.securityTokenController.text);
       if (Get.arguments['editMode']) {
-        var user =
-            User(state.usernameController.text, state.passwordController.text);
         orgDetailLogic.handleUserDone(user, index: Get.arguments['index']);
       } else {
-        var user =
-            User(state.usernameController.text, state.passwordController.text);
         orgDetailLogic.handleUserDone(user);
       }
       Get.back();

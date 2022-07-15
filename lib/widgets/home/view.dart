@@ -14,13 +14,13 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: const Text('Org Management'),
+        title: const Text('Org Manager'),
       ),
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical, child: OrgListComponent()),
       floatingActionButton: FloatingActionButton(
         onPressed: logic.goToDetail,
-        tooltip: 'Increment',
+        tooltip: 'Add Org',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

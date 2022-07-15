@@ -44,6 +44,15 @@ class UserDetailPage extends StatelessWidget {
                   validator: logic.passwordValidator,
                   obscureText: true,
                 ),
+                TextFormField(
+                  controller: state.personaController,
+                  decoration: const InputDecoration(labelText: 'Persona'),
+                ),
+                TextFormField(
+                  controller: state.securityTokenController,
+                  decoration: const InputDecoration(labelText: 'Security Token'),
+                  obscureText: true,
+                ),
                 // ElevatedButton(
                 //   child: Text('Create'),
                 //   onPressed: logic.create,
