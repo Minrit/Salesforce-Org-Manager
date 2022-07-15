@@ -57,7 +57,7 @@ class OrgListTileComponent extends StatelessWidget {
                             EasyLoading.showSuccess('Copied!');
                           },
                           child: Icon(Icons.copy, size: 16)),
-                      const SizedBox(width: 4),
+                      const SizedBox(width: 8),
                       SizedBox(
                         width: 100.w > 428.1 ? (47.5.w * 0.8) : (100.w * 0.7),
                         child: Text(
