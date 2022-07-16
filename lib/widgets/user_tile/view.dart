@@ -22,7 +22,7 @@ class UserTileComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<UserTileLogic>(builder: (logic) {
       return SizedBox(
-          width: 100.w > 428.1 ? 47.5.w : 100.w,
+          width: 100.w > 428.1 ? 46.w : 100.w,
           child: GestureDetector(
             onTap: () {
               Get.toNamed('user_detail',
