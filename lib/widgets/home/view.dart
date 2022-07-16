@@ -17,6 +17,16 @@ class HomePage extends StatelessWidget {
         title: const Text('Org Manager'),
         actions: <Widget>[
           Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: logic.importJson,
+              child: Icon(
+                Icons.upload,
+                size: 26.0,
+              ),
+            ),
+          ),
+          Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: logic.export2Json,

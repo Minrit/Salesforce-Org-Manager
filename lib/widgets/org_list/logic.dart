@@ -12,8 +12,6 @@ class OrgListLogic extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
-
     final box = GetStorage();
     final localOrgsString = box.read(GetStorageKey.localOrgs);
 
@@ -27,29 +25,31 @@ class OrgListLogic extends GetxController {
     super.onReady();
   }
 
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
   void updateOrgList(Org org, {int index = -1}) {
     if (index != -1) {
       state.orgList[index] = org;
     } else {
       state.orgList.add(org);
     }
-    // var jsonString = jsonEncode(state.orgList.map((e) => e.toJson()).toList());
-    // final box = GetStorage();
-    // box.write(GetStorageKey.localOrgs, jsonString);
     StorageUtils.storeOrgList(state.orgList);
     update();
   }
 
   void deleteOrg(int index) {
-    print(index);
     state.orgList.removeAt(index);
     StorageUtils.storeOrgList(state.orgList);
     update();
   }
 
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
+  void handleImport(List<Org> orgList) {
+    var newOrgList = <Org>[...state.orgList, ...orgList];
+    state.orgList = newOrgList;
+    update();
+    StorageUtils.storeOrgList(state.orgList);
   }
 }

@@ -13,18 +13,6 @@ class OrgListComponent extends StatelessWidget {
   String colorString(Color color) =>
       "#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}";
 
-  // Container _buildItem(Color color) => Container(
-  //       alignment: Alignment.center,
-  //       width: 100,
-  //       height: 30,
-  //       color: color,
-  //       child: Text(
-  //         colorString(color),
-  //         style: const TextStyle(color: Colors.white, shadows: [
-  //           Shadow(color: Colors.black, offset: Offset(.5, .5), blurRadius: 2)
-  //         ]),
-  //       ),
-  //     );
   OrgListTileComponent _buildItem(int index, Org org) {
     return OrgListTileComponent(index: index, org: org);
   }
