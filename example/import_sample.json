@@ -1,0 +1,36 @@
+[
+    {
+        "name": "sdf imported",
+        "domain": "https://login.salesforce.com",
+        "comment": null,
+        "isProduction": true,
+        "userList": [
+            {
+                "username": "dgsdhsd@imported.com",
+                "password": "sadgsdhsdh",
+                "persona": null,
+                "securityToken": null
+            },
+            {
+                "username": "sdfs@imported.com",
+                "password": "dsfdsgs",
+                "persona": null,
+                "securityToken": null
+            }
+        ]
+    },
+    {
+        "name": "sdgs imported",
+        "domain": "https://www.baidu.com/",
+        "comment": null,
+        "isProduction": false,
+        "userList": [
+            {
+                "username": "sdfdsf@sdfs.imported.com",
+                "password": "dsgdsgsdg",
+                "persona": null,
+                "securityToken": null
+            }
+        ]
+    }
+]
