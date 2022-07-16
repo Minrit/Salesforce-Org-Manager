@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dsm.som2.sf_org_manager_2">
    <application
-        android:label="sf_org_manager_2"
+        android:label="Org Manager"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
