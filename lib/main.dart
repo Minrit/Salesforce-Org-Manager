@@ -14,7 +14,7 @@ import 'widgets/home/view.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMinSize(const Size(600, 300));
+    setWindowMinSize(const Size(920, 300));
     setWindowMaxSize(Size.infinite);
   }
   await GetStorage.init();

@@ -20,7 +20,7 @@ class OrgListTileComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         // height: 156,
-        width: 100.w > 428.1 ? 50.w : 100.w,
+        width: 100.w > 600 ? 50.w : 100.w,
         child: GestureDetector(
           onTap: () {
             Get.toNamed('org_detail',
@@ -59,7 +59,7 @@ class OrgListTileComponent extends StatelessWidget {
                           child: Icon(Icons.copy, size: 16)),
                       const SizedBox(width: 8),
                       SizedBox(
-                        width: 100.w > 428.1 ? (47.5.w * 0.8) : (100.w * 0.7),
+                        width: 100.w > 600 ? (47.5.w * 0.8) : (100.w * 0.7),
                         child: Text(
                           org.domain?.replaceAll('https://', '') ?? '-',
                           overflow: TextOverflow.ellipsis,
