@@ -47,6 +47,7 @@ dependencies:
   flutter_easyloading: ^3.0.5
   path_provider: ^2.0.11
   file_picker: ^4.5.0
+  universal_html: ^2.0.8
 
 dev_dependencies:
   flutter_test:

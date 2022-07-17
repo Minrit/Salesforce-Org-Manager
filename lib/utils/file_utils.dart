@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 import 'dart:io' as io;
 
 import 'package:file_picker/file_picker.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:universal_html/html.dart';
 
 import '../common/get_storage_key.dart';
 import '../models/org.dart';
