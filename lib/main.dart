@@ -13,13 +13,14 @@ import 'widgets/home/view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMinSize(const Size(920, 300));
-    setWindowMaxSize(Size.infinite);
-  }
+  try {
+    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+      setWindowMinSize(const Size(920, 300));
+      setWindowMaxSize(Size.infinite);
+    }
+  } catch (e) {}
   await GetStorage.init();
-  EasyLoading.instance
-    .displayDuration = const Duration(milliseconds: 300);
+  EasyLoading.instance.displayDuration = const Duration(milliseconds: 300);
   runApp(const MyApp());
 }
 
