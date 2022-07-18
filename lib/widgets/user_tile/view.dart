@@ -98,7 +98,35 @@ class UserTileComponent extends StatelessWidget {
                             child: const Text('DELETE',
                                 style: TextStyle(color: Colors.red)),
                             onPressed: () {
-                              logic.deleteUser(index);
+                              AlertDialog alertDialog = AlertDialog(
+                                title: Text("Alert"),
+                                content:
+                                    Text("Would you like to delete your user?"),
+                                actions: [
+                                  TextButton(
+                                    child: Text(
+                                      "Cancel",
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  TextButton(
+                                    child: Text("Confirm"),
+                                    onPressed: () {
+                                      logic.deleteUser(index);
+                                      Navigator.of(context).pop();
+                                    },
+                                  )
+                                ],
+                              );
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return alertDialog;
+                                },
+                              );
                             },
                           ),
                           // const SizedBox(width: 8),

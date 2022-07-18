@@ -30,70 +30,90 @@ class OrgListTileComponent extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
-                // ListTile(
-                //   leading:
-                //       Icon(org.isProduction ? Icons.cloud : Icons.cloud_outlined),
-                //   title: Text(org.name),
-                //   subtitle: Text(org.domain ?? 'No Domain'),
-                // ),
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-                    Widget>[
-                  Row(crossAxisAlignment: CrossAxisAlignment.center, children: <
-                      Widget>[
-                    Icon(org.isProduction ? Icons.cloud : Icons.cloud_outlined,
-                        color: Colors.blue.shade400, size: 16),
-                    const SizedBox(width: 8),
-                    Text(org.name,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 16)),
-                  ]),
-                  SizedBox(height: 5),
-                  Row(
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      GestureDetector(
-                          onTap: () {
-                            Clipboard.setData(
-                                ClipboardData(text: org.domain ?? 'No Domain'));
-                            EasyLoading.showSuccess('Copied!');
-                          },
-                          child: Icon(Icons.copy, size: 16)),
-                      const SizedBox(width: 8),
-                      SizedBox(
-                        width: 100.w > 600 ? (47.5.w * 0.8) : (100.w * 0.7),
-                        child: Text(
-                          org.domain?.replaceAll('https://', '') ?? '-',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        ),
+                      Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                                org.isProduction
+                                    ? Icons.cloud
+                                    : Icons.cloud_outlined,
+                                color: Colors.blue.shade400,
+                                size: 16),
+                            const SizedBox(width: 8),
+                            Text(org.name,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600, fontSize: 16)),
+                          ]),
+                      SizedBox(height: 5),
+                      Row(
+                        children: <Widget>[
+                          GestureDetector(
+                              onTap: () {
+                                Clipboard.setData(ClipboardData(
+                                    text: org.domain ?? 'No Domain'));
+                                EasyLoading.showSuccess('Copied!');
+                              },
+                              child: Icon(Icons.copy, size: 16)),
+                          const SizedBox(width: 8),
+                          SizedBox(
+                            width: 100.w > 600 ? (47.5.w * 0.8) : (100.w * 0.7),
+                            child: Text(
+                              org.domain?.replaceAll('https://', '') ?? '-',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 5),
-                  TextButton(
-                      onPressed: () {
-                        logic.openOrg(org);
-                      },
-                      child: logic.renderPrimaryUser(org),
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                      ))
-                ]),
+                      SizedBox(height: 5),
+                      TextButton(
+                          onPressed: () {
+                            logic.openOrg(org);
+                          },
+                          child: logic.renderPrimaryUser(org),
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                          ))
+                    ]),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    // TextButton(
-                    //   child: const Text('BUY TICKETS'),
-                    //   onPressed: () {
-                    //     /* ... */
-                    //   },
-                    // ),
-                    // const SizedBox(width: 8),
                     TextButton(
                       child: const Text('DELETE',
                           style: TextStyle(color: Colors.red)),
                       onPressed: () {
-                        /* ... */
-                        logic.deleteOrg(index);
+                        AlertDialog alertDialog = AlertDialog(
+                          title: Text("AlertDialog"),
+                          content: Text(
+                              "Would you like to delete your org?"),
+                          actions: [
+                            TextButton(
+                              child: Text(
+                                "Cancel",
+                                style: TextStyle(color: Colors.red),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            TextButton(
+                              child: Text("Confirm"),
+                              onPressed: () {
+                                logic.deleteOrg(index);
+                                Navigator.of(context).pop();
+                              },
+                            )
+                          ],
+                        );
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return alertDialog;
+                          },
+                        );
                       },
                     ),
                     // const SizedBox(width: 8),
