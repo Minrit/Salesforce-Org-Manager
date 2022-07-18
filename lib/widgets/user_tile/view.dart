@@ -109,14 +109,14 @@ class UserTileComponent extends StatelessWidget {
                                       style: TextStyle(color: Colors.red),
                                     ),
                                     onPressed: () {
-                                      Navigator.of(context).pop();
+                                      Get.back();
                                     },
                                   ),
                                   TextButton(
                                     child: Text("Confirm"),
                                     onPressed: () {
                                       logic.deleteUser(index);
-                                      Navigator.of(context).pop();
+                                      Get.back();
                                     },
                                   )
                                 ],

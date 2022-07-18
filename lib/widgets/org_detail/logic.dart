@@ -38,6 +38,7 @@ class OrgDetailLogic extends GetxController {
   }
 
   void onCheckboxChange(v) {
+    state.edited = true;
     state.checkboxState = v;
     update();
   }
@@ -47,7 +48,7 @@ class OrgDetailLogic extends GetxController {
   }
 
   void deleteUser(int index) {
-    print('delete user');
+    state.edited = true;
     state.userList.removeAt(index);
     state.showUserPasswordList.removeAt(index);
     update();

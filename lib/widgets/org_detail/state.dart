@@ -12,6 +12,7 @@ class OrgDetailState {
   late Org org;
   List<User> userList = [];
   List<bool> showUserPasswordList = [];
+  bool edited = false;
 
   OrgDetailState() {
     ///Initialize variables
