@@ -1,11 +1,11 @@
 {
-    "name": "sf_org_manager_2",
-    "short_name": "sf_org_manager_2",
+    "name": "Org Manager",
+    "short_name": "Org Manager",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Salesforce Org Manager 2",
+    "description": "Salesforce Org Manager",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
