@@ -19,7 +19,6 @@ class OrgListTileComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        // height: 156,
         width: 100.w > 600 ? 50.w : 100.w,
         child: GestureDetector(
           onTap: () {
@@ -65,15 +64,6 @@ class OrgListTileComponent extends StatelessWidget {
                                 iconSize: 14,
                                 tooltip: 'Copy'),
                           ),
-                          // GestureDetector(
-                          //     onTap: () {
-                          //
-                          //
-                          //       Clipboard.setData(ClipboardData(
-                          //           text: org.domain ?? 'No Domain'));
-                          //       EasyLoading.showSuccess('Copied!');
-                          //     },
-                          //     child: Icon(Icons.copy, size: 16)),
                           const SizedBox(width: 8),
                           SizedBox(
                             width: 100.w > 600 ? (47.5.w * 0.8) : (100.w * 0.7),
