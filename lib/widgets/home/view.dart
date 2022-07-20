@@ -17,24 +17,21 @@ class HomePage extends StatelessWidget {
         title: const Text('Org Manager'),
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: logic.importJson,
-              child: Icon(
-                Icons.upload,
-                size: 26.0,
-              ),
-            ),
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+                icon: const Icon(Icons.upload),
+                color: Colors.white,
+                onPressed: logic.importJson,
+                tooltip: 'Import JSON'),
           ),
           Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: logic.export2Json,
-                child: Icon(
-                  Icons.download,
-                  size: 26.0,
-                ),
-              )),
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+                icon: const Icon(Icons.download),
+                color: Colors.white,
+                onPressed: logic.export2Json,
+                tooltip: 'Export JSON'),
+          )
         ],
       ),
       body: SingleChildScrollView(

@@ -50,13 +50,30 @@ class OrgListTileComponent extends StatelessWidget {
                       SizedBox(height: 5),
                       Row(
                         children: <Widget>[
-                          GestureDetector(
-                              onTap: () {
-                                Clipboard.setData(ClipboardData(
-                                    text: org.domain ?? 'No Domain'));
-                                EasyLoading.showSuccess('Copied!');
-                              },
-                              child: Icon(Icons.copy, size: 16)),
+                          SizedBox(
+                            height: 16.0,
+                            width: 16.0,
+                            child: IconButton(
+                                icon: const Icon(Icons.copy),
+                                padding: new EdgeInsets.all(0.0),
+                                splashRadius: 16,// color: Colors.white,
+                                onPressed: () {
+                                  Clipboard.setData(ClipboardData(
+                                      text: org.domain ?? 'No Domain'));
+                                  EasyLoading.showSuccess('Copied!');
+                                },
+                                iconSize: 14,
+                                tooltip: 'Copy'),
+                          ),
+                          // GestureDetector(
+                          //     onTap: () {
+                          //
+                          //
+                          //       Clipboard.setData(ClipboardData(
+                          //           text: org.domain ?? 'No Domain'));
+                          //       EasyLoading.showSuccess('Copied!');
+                          //     },
+                          //     child: Icon(Icons.copy, size: 16)),
                           const SizedBox(width: 8),
                           SizedBox(
                             width: 100.w > 600 ? (47.5.w * 0.8) : (100.w * 0.7),
@@ -87,8 +104,7 @@ class OrgListTileComponent extends StatelessWidget {
                       onPressed: () {
                         AlertDialog alertDialog = AlertDialog(
                           title: Text("AlertDialog"),
-                          content: Text(
-                              "Would you like to delete your org?"),
+                          content: Text("Would you like to delete your org?"),
                           actions: [
                             TextButton(
                               child: Text(
