@@ -59,14 +59,22 @@ class UserDetailPage extends StatelessWidget {
             title: Text('User Detail'),
             actions: <Widget>[
               Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: GestureDetector(
-                    onTap: logic.handleDone,
-                    child: Icon(
-                      Icons.done,
-                      size: 26.0,
-                    ),
-                  )),
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: IconButton(
+                      icon: const Icon(Icons.done),
+                      iconSize: 30,
+                      splashRadius: 40,
+                      color: Colors.white,
+                      onPressed: logic.handleDone
+                  ),
+                  // GestureDetector(
+                  //   onTap: logic.handleDone,
+                  //   child: Icon(
+                  //     Icons.done,
+                  //     size: 26.0,
+                  //   ),
+                  // )
+              ),
             ],
           ),
           body: Container(

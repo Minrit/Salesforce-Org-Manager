@@ -20,7 +20,6 @@ class OrgDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Future<bool> showDialogFuture(BuildContext context) async {
       bool back = false;
       Completer c = Completer();
@@ -28,8 +27,7 @@ class OrgDetailPage extends StatelessWidget {
         context: context,
         builder: (context) => AlertDialog(
           title: Text("Alert"),
-          content:
-          Text("Would you like to discard changes and back?"),
+          content: Text("Would you like to discard changes and back?"),
           actions: <Widget>[
             TextButton(
               child: Text('Cancel'),
@@ -53,7 +51,6 @@ class OrgDetailPage extends StatelessWidget {
       return back;
     }
 
-
     return WillPopScope(
       onWillPop: () async {
         if (state.edited) {
@@ -64,101 +61,102 @@ class OrgDetailPage extends StatelessWidget {
         }
       },
       child: GetBuilder<OrgDetailLogic>(builder: (logic) {
-          return Scaffold(
-            appBar: AppBar(
-              // automaticallyImplyLeading: false,
-              title: Text('Org Detail'),
-              actions: <Widget>[
-                Padding(
-                    padding: EdgeInsets.only(right: 20.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        if (state.loginFormKey.currentState!.validate()) {
-                          logic.handleDone();
-                          Get.back();
-                        }
-                      },
-                      child: Icon(
-                        Icons.done,
-                        size: 26.0,
-                      ),
-                    )),
-              ],
-            ),
-            body: SingleChildScrollView(
-              child: Container(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Form(
-                      key: state.loginFormKey,
-                      child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextFormField(
-                            controller: state.nameController,
-                            decoration: const InputDecoration(labelText: 'Name'),
-                            validator: (value) {
-                              return FormUtils.isFieldEmpty(
-                                  value, 'Please enter an org name');
-                            },
-                            onChanged: (v) {
-                              state.edited = true;
-                            },
-                          ),
-                          TextFormField(
-                            controller: state.domainController,
-                            decoration:
-                                const InputDecoration(labelText: 'Domain'),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter a valid domain';
-                              } else {
-                                if (Uri.parse(value).isAbsolute) {
-                                  return null;
-                                } else {
-                                  return 'Please enter a valid domain';
-                                }
-                              }
-                            },
-                            obscureText: false,
-                            onChanged: (v) {
-                              state.edited = true;
-                            },
-                          ),
-                          Row(children: [
-                            Flexible(
-                              child: CheckboxFormField(
-                                  title: Text('Is Production'),
-                                  // onSaved: logic.onCheckboxChange,
-                                  // validator: logic.checkboxValidator,
-                                  onChanged: logic.onCheckboxChange,
-                                  initialValue: state.checkboxState),
-                            ),
-                            ElevatedButton(
-                              child: Text('Add User'),
-                              onPressed: logic.addUser,
-                            )
-                          ]),
-                        ],
-                      ),
-                    ),
-                    ReorderableWrap(
-                      needsLongPressDraggable: false,
-                      direction: Axis.horizontal,
-                      alignment: WrapAlignment.start,
-                      crossAxisAlignment: WrapCrossAlignment.start,
-                      onReorder: logic.onReorder,
-                      children: List.generate(state.userList.length,
-                          (i) => _buildItem(state.userList[i], i)),
-                    )
-                  ],
+        return Scaffold(
+          appBar: AppBar(
+            // automaticallyImplyLeading: false,
+            title: Text('Org Detail'),
+            actions: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(right: 10.0),
+                child: IconButton(
+                    icon: const Icon(Icons.done),
+                    iconSize: 30,
+                    splashRadius: 40,
+                    color: Colors.white,
+                    onPressed: () {
+                      if (state.orgFormKey.currentState!.validate()) {
+                        logic.handleDone();
+                        Get.back();
+                      }
+                    }
                 ),
               ),
+            ],
+          ),
+          body: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Form(
+                    key: state.orgFormKey,
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextFormField(
+                          controller: state.nameController,
+                          decoration: const InputDecoration(labelText: 'Name'),
+                          validator: (value) {
+                            return FormUtils.isFieldEmpty(
+                                value, 'Please enter an org name');
+                          },
+                          onChanged: (v) {
+                            state.edited = true;
+                          },
+                        ),
+                        TextFormField(
+                          controller: state.domainController,
+                          decoration:
+                              const InputDecoration(labelText: 'Domain'),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter a valid domain';
+                            } else {
+                              if (Uri.parse(value).isAbsolute) {
+                                return null;
+                              } else {
+                                return 'Please enter a valid domain';
+                              }
+                            }
+                          },
+                          obscureText: false,
+                          onChanged: (v) {
+                            state.edited = true;
+                          },
+                        ),
+                        Row(children: [
+                          Flexible(
+                            child: CheckboxFormField(
+                                title: Text('Is Production'),
+                                // onSaved: logic.onCheckboxChange,
+                                // validator: logic.checkboxValidator,
+                                onChanged: logic.onCheckboxChange,
+                                initialValue: state.checkboxState),
+                          ),
+                          ElevatedButton(
+                            child: Text('Add User'),
+                            onPressed: logic.addUser,
+                          )
+                        ]),
+                      ],
+                    ),
+                  ),
+                  ReorderableWrap(
+                    needsLongPressDraggable: false,
+                    direction: Axis.horizontal,
+                    alignment: WrapAlignment.start,
+                    crossAxisAlignment: WrapCrossAlignment.start,
+                    onReorder: logic.onReorder,
+                    children: List.generate(state.userList.length,
+                        (i) => _buildItem(state.userList[i], i)),
+                  )
+                ],
+              ),
             ),
-          );
-        }),
+          ),
+        );
+      }),
     );
   }
 }

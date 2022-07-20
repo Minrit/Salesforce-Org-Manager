@@ -4,7 +4,7 @@ import '../../models/org.dart';
 import '../../models/user.dart';
 
 class OrgDetailState {
-  final loginFormKey = GlobalKey<FormState>();
+  final orgFormKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final domainController = TextEditingController();
   bool checkboxState = false;
