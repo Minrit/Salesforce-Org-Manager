@@ -39,10 +39,11 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical, child: OrgListComponent()),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: logic.goToDetail,
-        tooltip: 'Add Org',
-        child: const Icon(Icons.add),
+        tooltip: 'Add an org',
+        label: const Text('Add an org'),
+        icon: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

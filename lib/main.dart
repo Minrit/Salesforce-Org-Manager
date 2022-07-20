@@ -49,6 +49,7 @@ class MyApp extends StatelessWidget {
         ],
         debugShowCheckedModeBanner: false,
         builder: EasyLoading.init(),
+        themeMode: ThemeMode.system,
       );
     });
   }
