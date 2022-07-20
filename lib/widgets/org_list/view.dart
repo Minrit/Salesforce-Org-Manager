@@ -21,6 +21,7 @@ class OrgListComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<OrgListLogic>(builder: (logic) {
       return ReorderableWrap(
+        needsLongPressDraggable: false,
         direction: Axis.horizontal,
         alignment: WrapAlignment.start,
         onReorder: logic.onReorder,

@@ -145,6 +145,7 @@ class OrgDetailPage extends StatelessWidget {
                       ),
                     ),
                     ReorderableWrap(
+                      needsLongPressDraggable: false,
                       direction: Axis.horizontal,
                       alignment: WrapAlignment.start,
                       crossAxisAlignment: WrapCrossAlignment.start,
