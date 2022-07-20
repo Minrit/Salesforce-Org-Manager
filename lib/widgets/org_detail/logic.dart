@@ -54,17 +54,18 @@ class OrgDetailLogic extends GetxController {
     update();
   }
 
-  void openOrg(int index){
+  void openOrg(int index) async {
     var domain = state.domainController.text;
     // Salesforce org domain example are shown as below:
     // https://login.salesforce.com/?un=daniel@example.com&pw=hunter12
+    await Clipboard.setData(
+        ClipboardData(text: state.userList[index].password));
     var url = Uri.parse(
         '$domain/?un=${state.userList[index].username}&pw=${state.userList[index].password}');
-    Clipboard.setData(ClipboardData(text: state.userList[index].password));
     launchUrl(url);
   }
 
-  void togglePassword(int index){
+  void togglePassword(int index) {
     state.showUserPasswordList[index] = !state.showUserPasswordList[index];
     update();
   }
@@ -72,6 +73,7 @@ class OrgDetailLogic extends GetxController {
   void onReorder(int oldIndex, int newIndex) {
     User user = state.userList.removeAt(oldIndex);
     state.userList.insert(newIndex, user);
+    state.edited = true;
     update();
   }
 
@@ -87,7 +89,7 @@ class OrgDetailLogic extends GetxController {
       state.userList = List.from(org.userList ?? []);
       state.org = org;
     }
-    for(var i = 0; i < state.userList.length; i++){
+    for (var i = 0; i < state.userList.length; i++) {
       state.showUserPasswordList.add(false);
     }
     update();

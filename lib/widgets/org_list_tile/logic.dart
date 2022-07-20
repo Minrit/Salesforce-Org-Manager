@@ -38,14 +38,14 @@ class OrgListTileLogic extends GetxController {
     orgListLogic.deleteOrg(index);
   }
 
-  void openOrg(Org org) {
+  void openOrg(Org org) async {
     var domain = org.domain;
     domain ??= 'https://${org.isProduction ? 'login' : 'test'}.salesforce.com';
     // Salesforce org domain example are shown as below:
     // https://login.salesforce.com/?un=daniel@example.com&pw=hunter12
     var url = Uri.parse(
         '$domain/?un=${org.userList![0].username}&pw=${org.userList![0].password}');
-    Clipboard.setData(ClipboardData(text: org.userList![0].password));
+    await Clipboard.setData(ClipboardData(text: org.userList![0].password));
     launchUrl(url);
   }
 
