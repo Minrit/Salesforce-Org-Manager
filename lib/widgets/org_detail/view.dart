@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:reorderables/reorderables.dart';
 import 'package:sf_org_manager/widgets/user_tile/view.dart';
 
 import '../../models/user.dart';
@@ -140,17 +141,14 @@ class OrgDetailPage extends StatelessWidget {
                               onPressed: logic.addUser,
                             )
                           ]),
-                          // ElevatedButton(
-                          //   child: Text('Create'),
-                          //   onPressed: logic.create,
-                          // )
                         ],
                       ),
                     ),
-                    Wrap(
+                    ReorderableWrap(
                       direction: Axis.horizontal,
                       alignment: WrapAlignment.start,
                       crossAxisAlignment: WrapCrossAlignment.start,
+                      onReorder: logic.onReorder,
                       children: List.generate(state.userList.length,
                           (i) => _buildItem(state.userList[i], i)),
                     )

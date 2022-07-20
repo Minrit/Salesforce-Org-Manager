@@ -30,6 +30,13 @@ class OrgListLogic extends GetxController {
     super.onClose();
   }
 
+  void onReorder(int oldIndex, int newIndex) {
+    Org org = state.orgList.removeAt(oldIndex);
+    state.orgList.insert(newIndex, org);
+    StorageUtils.storeOrgList(state.orgList);
+    update();
+  }
+
   void updateOrgList(Org org, {int index = -1}) {
     if (index != -1) {
       state.orgList[index] = org;

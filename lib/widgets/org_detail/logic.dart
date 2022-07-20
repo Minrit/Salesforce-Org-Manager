@@ -69,6 +69,12 @@ class OrgDetailLogic extends GetxController {
     update();
   }
 
+  void onReorder(int oldIndex, int newIndex) {
+    User user = state.userList.removeAt(oldIndex);
+    state.userList.insert(newIndex, user);
+    update();
+  }
+
   @override
   void onReady() {
     // TODO: implement onReady
