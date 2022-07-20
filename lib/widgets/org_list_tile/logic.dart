@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../../models/org.dart';
+import '../../utils/copy_utils.dart';
 import '../org_list/logic.dart';
 import 'state.dart';
 
@@ -45,7 +47,11 @@ class OrgListTileLogic extends GetxController {
     // https://login.salesforce.com/?un=daniel@example.com&pw=hunter12
     var url = Uri.parse(
         '$domain/?un=${org.userList![0].username}&pw=${org.userList![0].password}');
-    await Clipboard.setData(ClipboardData(text: org.userList![0].password));
+    if (kIsWeb) {
+      CopyUtils.copyToClipboardWeb(org.userList![0].password);
+    } else {
+      await Clipboard.setData(ClipboardData(text: org.userList![0].password));
+    }
     launchUrl(url);
   }
 
@@ -53,7 +59,7 @@ class OrgListTileLogic extends GetxController {
     return MediaQuery.of(context).size.height * 0.2;
   }
 
-  // Widget renderDomain(domain){
-  //
-  // }
+// Widget renderDomain(domain){
+//
+// }
 }

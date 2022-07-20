@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sf_org_manager/utils/copy_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../../models/org.dart';
 import '../../models/user.dart';
@@ -58,8 +60,12 @@ class OrgDetailLogic extends GetxController {
     var domain = state.domainController.text;
     // Salesforce org domain example are shown as below:
     // https://login.salesforce.com/?un=daniel@example.com&pw=hunter12
-    await Clipboard.setData(
-        ClipboardData(text: state.userList[index].password));
+    if (kIsWeb) {
+      CopyUtils.copyToClipboardWeb(state.userList[index].password);
+    } else {
+      await Clipboard.setData(
+          ClipboardData(text: state.userList[index].password));
+    }
     var url = Uri.parse(
         '$domain/?un=${state.userList[index].username}&pw=${state.userList[index].password}');
     launchUrl(url);
