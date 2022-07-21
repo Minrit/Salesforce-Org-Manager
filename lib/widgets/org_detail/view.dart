@@ -7,7 +7,6 @@ import 'package:sf_org_manager/widgets/user_tile/view.dart';
 
 import '../../models/user.dart';
 import '../../utils/form_utils.dart';
-import '../checkbox_form_field.dart';
 import 'logic.dart';
 
 class OrgDetailPage extends StatelessWidget {
@@ -78,10 +77,14 @@ class OrgDetailPage extends StatelessWidget {
                         logic.handleDone();
                         Get.back();
                       }
-                    }
-                ),
+                    }),
               ),
             ],
+          ),
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: logic.addUser,
+            label: const Text('Add a user'),
+            icon: const Icon(Icons.add),
           ),
           body: SingleChildScrollView(
             child: Container(
@@ -125,20 +128,33 @@ class OrgDetailPage extends StatelessWidget {
                             state.edited = true;
                           },
                         ),
-                        Row(children: [
-                          Flexible(
-                            child: CheckboxFormField(
-                                title: Text('Is Production'),
-                                // onSaved: logic.onCheckboxChange,
-                                // validator: logic.checkboxValidator,
-                                onChanged: logic.onCheckboxChange,
-                                initialValue: state.checkboxState),
-                          ),
-                          ElevatedButton(
-                            child: Text('Add User'),
-                            onPressed: logic.addUser,
-                          )
-                        ]),
+                        SizedBox(height: 10),
+                        Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Checkbox(
+                                    value: state.checkboxState,
+                                    onChanged: logic.onCheckboxChange),
+                              ),
+                              SizedBox(width: 10),
+                              Text('Is Production')
+                              // Flexible(
+                              //   child: CheckboxFormField(
+                              //       title: Text('Is Production'),
+                              //       // onSaved: logic.onCheckboxChange,
+                              //       // validator: logic.checkboxValidator,
+                              //       onChanged: logic.onCheckboxChange,
+                              //       initialValue: state.checkboxState),
+                              // ),
+                              // ElevatedButton(
+                              //   child: Text('Add User'),
+                              //   onPressed: logic.addUser,
+                              // )
+                            ]),
+                        SizedBox(height: 10),
                       ],
                     ),
                   ),

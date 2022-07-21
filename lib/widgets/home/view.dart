@@ -38,7 +38,6 @@ class HomePage extends StatelessWidget {
           scrollDirection: Axis.vertical, child: OrgListComponent()),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: logic.goToDetail,
-        tooltip: 'Add an org',
         label: const Text('Add an org'),
         icon: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
