@@ -50,6 +50,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         builder: EasyLoading.init(),
         themeMode: ThemeMode.system,
+        theme: ThemeData(colorScheme: const ColorScheme.light()),
+        darkTheme: ThemeData(colorScheme: const ColorScheme.dark()),
       );
     });
   }
