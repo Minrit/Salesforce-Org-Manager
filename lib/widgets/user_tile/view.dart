@@ -37,6 +37,10 @@ class UserTileComponent extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
+                          (() {
+                            return logic.renderInternalIcon(user);
+                          })(),
+                          const SizedBox(width: 8),
                           TextButton(
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.all(0.0),
@@ -51,17 +55,21 @@ class UserTileComponent extends StatelessWidget {
                       ),
                       Row(
                         children: <Widget>[
-                          GestureDetector(
-                              onTap: () {
-                                logic.togglePassword(index);
-                              },
-                              child: Icon(
-                                  showPassword
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  size: 14,
-                                  color: Colors.black54)),
-                          const SizedBox(width: 5),
+                          SizedBox(
+                            height: 16.0,
+                            width: 16.0,
+                            child: IconButton(
+                                icon: Icon(showPassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                                padding: const EdgeInsets.all(0.0),
+                                splashRadius: 16,
+                                onPressed: () {
+                                  logic.togglePassword(index);
+                                },
+                                iconSize: 14),
+                          ),
+                          const SizedBox(width: 8),
                           TextButton(
                             style: TextButton.styleFrom(
                               padding: const EdgeInsets.all(0.0),
@@ -96,8 +104,8 @@ class UserTileComponent extends StatelessWidget {
                             onPressed: () {
                               AlertDialog alertDialog = AlertDialog(
                                 title: const Text("Alert"),
-                                content:
-                                    const Text("Would you like to delete your user?"),
+                                content: const Text(
+                                    "Would you like to delete your user?"),
                                 actions: [
                                   TextButton(
                                     child: const Text(
