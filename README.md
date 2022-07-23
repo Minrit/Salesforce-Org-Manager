@@ -1,6 +1,11 @@
 # Salesforce Org Manager
 
-An app for the Salesforce Developers to easily manage Salesforce Orgs.
+An app for the Salesforce Developers to easily manage Salesforce Orgs based on Flutter.
+* 🔒 All data are stored locally. Support Windows, macOS, iOS, Android and Web.
+* ⚡ Super fast.
+* ✈️ Light weight.
+* 📝 Easy to use.
+* 🚚 Support import and export.
 
 ## Introduction
 
