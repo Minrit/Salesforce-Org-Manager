@@ -83,6 +83,11 @@ class OrgDetailLogic extends GetxController {
     update();
   }
 
+  void setEdited(bool v){
+    state.edited = v;
+    update();
+  }
+
   @override
   void onReady() {
     // TODO: implement onReady

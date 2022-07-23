@@ -43,6 +43,9 @@ class UserDetailLogic extends GetxController {
       } else {
         orgDetailLogic.handleUserDone(user);
       }
+      if (state.edited) {
+        orgDetailLogic.setEdited(true);
+      }
       Get.back();
     }
   }
