@@ -20,7 +20,7 @@ class OrgListTileComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         width: 100.w > 600 ? 50.w : 100.w,
-        child: GestureDetector(
+        child: InkWell(
           onTap: () {
             Get.toNamed('org_detail',
                 arguments: {'org': org, 'editMode': true, 'index': index});

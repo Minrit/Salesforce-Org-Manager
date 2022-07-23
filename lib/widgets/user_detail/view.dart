@@ -56,10 +56,10 @@ class UserDetailPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             // automaticallyImplyLeading: false,
-            title: Text('User Detail'),
+            title: const Text('User Detail'),
             actions: <Widget>[
               Padding(
-                  padding: EdgeInsets.only(right: 10.0),
+                  padding: const EdgeInsets.only(right: 10.0),
                   child: IconButton(
                       icon: const Icon(Icons.done),
                       iconSize: 30,
@@ -67,13 +67,6 @@ class UserDetailPage extends StatelessWidget {
                       color: Colors.white,
                       onPressed: logic.handleDone
                   ),
-                  // GestureDetector(
-                  //   onTap: logic.handleDone,
-                  //   child: Icon(
-                  //     Icons.done,
-                  //     size: 26.0,
-                  //   ),
-                  // )
               ),
             ],
           ),

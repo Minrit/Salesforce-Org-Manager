@@ -23,7 +23,7 @@ class UserTileComponent extends StatelessWidget {
     return GetBuilder<UserTileLogic>(builder: (logic) {
       return SizedBox(
           width: 100.w > 600 ? 46.w : 100.w,
-          child: GestureDetector(
+          child: InkWell(
             onTap: () {
               Get.toNamed('user_detail',
                   arguments: {'user': user, 'editMode': true, 'index': index});
@@ -40,8 +40,6 @@ class UserTileComponent extends StatelessWidget {
                           TextButton(
                               style: TextButton.styleFrom(
                                 padding: const EdgeInsets.all(0.0),
-                                // primary: Colors.white,
-                                // textStyle: const TextStyle(fontSize: 20),
                               ),
                               onPressed: () {
                                 Clipboard.setData(
@@ -63,12 +61,10 @@ class UserTileComponent extends StatelessWidget {
                                       : Icons.visibility_off,
                                   size: 14,
                                   color: Colors.black54)),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           TextButton(
                             style: TextButton.styleFrom(
                               padding: const EdgeInsets.all(0.0),
-                              // primary: Colors.white,
-                              // textStyle: const TextStyle(fontSize: 20),
                             ),
                             onPressed: () {
                               Clipboard.setData(
@@ -99,12 +95,12 @@ class UserTileComponent extends StatelessWidget {
                                 style: TextStyle(color: Colors.red)),
                             onPressed: () {
                               AlertDialog alertDialog = AlertDialog(
-                                title: Text("Alert"),
+                                title: const Text("Alert"),
                                 content:
-                                    Text("Would you like to delete your user?"),
+                                    const Text("Would you like to delete your user?"),
                                 actions: [
                                   TextButton(
-                                    child: Text(
+                                    child: const Text(
                                       "Cancel",
                                       style: TextStyle(color: Colors.red),
                                     ),
@@ -113,7 +109,7 @@ class UserTileComponent extends StatelessWidget {
                                     },
                                   ),
                                   TextButton(
-                                    child: Text("Confirm"),
+                                    child: const Text("Confirm"),
                                     onPressed: () {
                                       logic.deleteUser(index);
                                       Get.back();
