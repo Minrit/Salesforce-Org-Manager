@@ -18,6 +18,7 @@ class UserDetailLogic extends GetxController {
       state.passwordController.text = user.password;
       state.personaController.text = user.persona ?? '';
       state.securityTokenController.text = user.securityToken ?? '';
+      state.internalState = user.internal ?? true;
     }
     update();
     super.onReady();
@@ -35,7 +36,8 @@ class UserDetailLogic extends GetxController {
       var user = User(
           state.usernameController.text, state.passwordController.text,
           persona: state.personaController.text,
-          securityToken: state.securityTokenController.text);
+          securityToken: state.securityTokenController.text,
+          internal: state.internalState);
       if (Get.arguments['editMode']) {
         orgDetailLogic.handleUserDone(user, index: Get.arguments['index']);
       } else {
@@ -43,6 +45,12 @@ class UserDetailLogic extends GetxController {
       }
       Get.back();
     }
+  }
+
+  void handleInternalChange(bool? v) {
+    state.edited = true;
+    state.internalState = v ?? false;
+    update();
   }
 
   String? usernameValidator(v) {

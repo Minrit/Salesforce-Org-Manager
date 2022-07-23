@@ -5,6 +5,7 @@ class UserDetailState {
   final passwordController = TextEditingController();
   final personaController = TextEditingController();
   final securityTokenController = TextEditingController();
+  bool internalState = false;
   bool edited = false;
   final userFormKey = GlobalKey<FormState>();
 

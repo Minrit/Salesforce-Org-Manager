@@ -80,6 +80,21 @@ class UserDetailPage extends StatelessWidget {
                       state.edited = true;
                     },
                   ),
+                  const SizedBox(height: 10.0),
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: Checkbox(
+                              value: state.internalState,
+                              onChanged: logic.handleInternalChange
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        const Text('Salesforce User')
+                      ]),
                 ],
               ),
             ),
