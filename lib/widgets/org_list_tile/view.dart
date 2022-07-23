@@ -122,7 +122,6 @@ class OrgListTileComponent extends StatelessWidget {
                         );
                       },
                     ),
-                    // const SizedBox(width: 8),
                   ],
                 ),
               ]),

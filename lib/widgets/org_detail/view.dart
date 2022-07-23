@@ -65,7 +65,6 @@ class OrgDetailPage extends StatelessWidget {
                   Form(
                     key: state.orgFormKey,
                     child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextFormField(
                           controller: state.nameController,
