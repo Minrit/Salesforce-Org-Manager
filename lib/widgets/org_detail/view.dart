@@ -7,6 +7,7 @@ import 'package:sf_org_manager/widgets/user_tile/view.dart';
 
 import '../../models/user.dart';
 import '../../utils/form_utils.dart';
+import '../../utils/widget_utils.dart';
 import 'logic.dart';
 
 class OrgDetailPage extends StatelessWidget {
@@ -19,41 +20,11 @@ class OrgDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<bool> showDialogFuture(BuildContext context) async {
-      bool back = false;
-      Completer c = Completer();
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("Alert"),
-          content: Text("Would you like to discard changes and back?"),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Get.back();
-                c.complete();
-              },
-            ),
-            TextButton(
-              child: Text('Discard', style: TextStyle(color: Colors.red)),
-              onPressed: () {
-                back = true;
-                Get.back();
-                c.complete();
-              },
-            ),
-          ],
-        ),
-      );
-      await c.future;
-      return back;
-    }
 
     return WillPopScope(
       onWillPop: () async {
         if (state.edited) {
-          var back = showDialogFuture(context);
+          var back = WidgetUtils.showDialogFuture(context);
           return Future.value(back);
         } else {
           return Future.value(true);
@@ -62,11 +33,10 @@ class OrgDetailPage extends StatelessWidget {
       child: GetBuilder<OrgDetailLogic>(builder: (logic) {
         return Scaffold(
           appBar: AppBar(
-            // automaticallyImplyLeading: false,
-            title: Text('Org Detail'),
+            title: const Text('Org Detail'),
             actions: <Widget>[
               Padding(
-                padding: EdgeInsets.only(right: 10.0),
+                padding: const EdgeInsets.only(right: 10.0),
                 child: IconButton(
                     icon: const Icon(Icons.done),
                     iconSize: 30,
@@ -128,7 +98,7 @@ class OrgDetailPage extends StatelessWidget {
                             state.edited = true;
                           },
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -139,22 +109,10 @@ class OrgDetailPage extends StatelessWidget {
                                     value: state.checkboxState,
                                     onChanged: logic.onCheckboxChange),
                               ),
-                              SizedBox(width: 10),
-                              Text('Is Production')
-                              // Flexible(
-                              //   child: CheckboxFormField(
-                              //       title: Text('Is Production'),
-                              //       // onSaved: logic.onCheckboxChange,
-                              //       // validator: logic.checkboxValidator,
-                              //       onChanged: logic.onCheckboxChange,
-                              //       initialValue: state.checkboxState),
-                              // ),
-                              // ElevatedButton(
-                              //   child: Text('Add User'),
-                              //   onPressed: logic.addUser,
-                              // )
+                              const SizedBox(width: 10),
+                              const Text('Is Production')
                             ]),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                       ],
                     ),
                   ),

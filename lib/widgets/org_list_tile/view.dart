@@ -43,10 +43,10 @@ class OrgListTileComponent extends StatelessWidget {
                                 size: 16),
                             const SizedBox(width: 8),
                             Text(org.name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.w600, fontSize: 16)),
                           ]),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Row(
                         children: <Widget>[
                           SizedBox(
@@ -54,7 +54,7 @@ class OrgListTileComponent extends StatelessWidget {
                             width: 16.0,
                             child: IconButton(
                                 icon: const Icon(Icons.copy),
-                                padding: new EdgeInsets.all(0.0),
+                                padding: const EdgeInsets.all(0.0),
                                 splashRadius: 16,// color: Colors.white,
                                 onPressed: () {
                                   Clipboard.setData(ClipboardData(
@@ -75,7 +75,7 @@ class OrgListTileComponent extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       TextButton(
                           onPressed: () {
                             logic.openOrg(org);
@@ -93,11 +93,11 @@ class OrgListTileComponent extends StatelessWidget {
                           style: TextStyle(color: Colors.red)),
                       onPressed: () {
                         AlertDialog alertDialog = AlertDialog(
-                          title: Text("AlertDialog"),
-                          content: Text("Would you like to delete your org?"),
+                          title: const Text("Alert"),
+                          content: const Text("Would you like to delete your org?"),
                           actions: [
                             TextButton(
-                              child: Text(
+                              child: const Text(
                                 "Cancel",
                                 style: TextStyle(color: Colors.red),
                               ),
@@ -106,7 +106,7 @@ class OrgListTileComponent extends StatelessWidget {
                               },
                             ),
                             TextButton(
-                              child: Text("Confirm"),
+                              child: const Text("Confirm"),
                               onPressed: () {
                                 logic.deleteOrg(index);
                                 Get.back();

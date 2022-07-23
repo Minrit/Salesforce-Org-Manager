@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/widget_utils.dart';
 import 'logic.dart';
 
 class UserDetailPage extends StatelessWidget {
@@ -11,42 +12,11 @@ class UserDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<bool> showDialogFuture(BuildContext context) async {
-      bool back = false;
-      Completer c = Completer();
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("Alert"),
-          content:
-          Text("Would you like to discard changes and back?"),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Get.back();
-                c.complete();
-              },
-            ),
-            TextButton(
-              child: Text('Discard', style: TextStyle(color: Colors.red)),
-              onPressed: () {
-                back = true;
-                Get.back();
-                c.complete();
-              },
-            ),
-          ],
-        ),
-      );
-      await c.future;
-      return back;
-    }
 
     return WillPopScope(
       onWillPop: () async {
         if (state.edited) {
-          var back = showDialogFuture(context);
+          var back = WidgetUtils.showDialogFuture(context);
           return Future.value(back);
         } else {
           return Future.value(true);
