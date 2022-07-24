@@ -52,7 +52,7 @@ class OrgListTileLogic extends GetxController {
     } else {
       await Clipboard.setData(ClipboardData(text: org.userList![0].password));
     }
-    launchUrl(url);
+    launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   double setHeight(context) {

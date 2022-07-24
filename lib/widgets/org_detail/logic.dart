@@ -68,7 +68,7 @@ class OrgDetailLogic extends GetxController {
     }
     var url = Uri.parse(
         '$domain/?un=${state.userList[index].username}&pw=${state.userList[index].password}');
-    launchUrl(url);
+    launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   void togglePassword(int index) {
