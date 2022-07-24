@@ -104,3 +104,11 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+msix_config:
+  display_name: Org Manager
+  publisher_display_name: 窦上民
+  identity_name: 1970B75A149C.OrgManager 
+  msix_version: 1.0.0.0
+  logo_path: ./windows/runner/resources/app_icon_msix.png
+  publisher: CN=16B8C2C4-C39F-4904-AF33-E371FCE171C5
+  store: true
