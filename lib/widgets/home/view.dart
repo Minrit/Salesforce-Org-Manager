@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:sf_org_manager/widgets/org_list/view.dart';
 
@@ -19,18 +20,20 @@ class HomePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: IconButton(
-                icon: const Icon(Icons.upload),
+                icon: const FaIcon(FontAwesomeIcons.fileArrowUp),
                 color: Colors.white,
                 onPressed: logic.importJson,
-                tooltip: 'Import JSON'),
+                tooltip: 'Import JSON',
+                iconSize: 17),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: IconButton(
-                icon: const Icon(Icons.download),
+                icon: const FaIcon(FontAwesomeIcons.fileExport),
                 color: Colors.white,
                 onPressed: logic.export2Json,
-                tooltip: 'Export JSON'),
+                tooltip: 'Export JSON',
+                iconSize: 17),
           )
         ],
       ),
